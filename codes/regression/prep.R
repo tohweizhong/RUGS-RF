@@ -1,9 +1,13 @@
+library(tree)
+library(randomForest)
+library(beepr)
+
 data(imports85)
 imp <- imports85
 
-imp <- imp[,-2]  # Too many NAs in normalizedLosses.
+# imp <- imp[,-2]  # Too many NAs in normalizedLosses.
 imp <- imp[complete.cases(imp), ]
-## Drop empty levels for factors
+# ## Drop empty levels for factors
 imp[] <- lapply(imp, function(x) if (is.factor(x)) x[, drop=TRUE] else x)
 
 # preparation for cross validation:
