@@ -16,14 +16,14 @@ plot(cv.prune$size, cv.prune$dev, pch = 20, col = "red", type = "b",
      xlab = "size of tree", ylab = "performance")
 
 # let's choose a tree size of 5
-best.tree.size <- 5
+best.tree.size <- 9
 
 # pruning (cost-complexity pruning)
 pruned.tree.mod <- prune.misclass(tree.mod, best = best.tree.size)
 
 # here's the new tree model
 plot(pruned.tree.mod)
-title("Pruned decision tree (5 leaf nodes)")
+title(paste("Pruned decision tree (", best.tree.size, " leaf nodes)",sep = ""))
 text(pruned.tree.mod, cex = 0.75)
 
 # now let's make some predictions
@@ -32,6 +32,8 @@ tree.pred <- predict(pruned.tree.mod,
                      type="class")
 
 # confusion matrix
+# rows are the predicted classes
+# columns are the actual classes
 print(tree.pred.results <- table(tree.pred, spam.test$type))
 
 # What is the accuracy of our tree model?

@@ -8,8 +8,8 @@ barplot(c(tree.accuracy,
 # plot ROC curve + AUC
 # (Receiver operating characteristic) (Area under curve)
 # Note that this cannot be done for decision tree models,
-# because the ROC is only valid for models that gives
-# probability output
+# because the ROC is only valid for models that give
+# probabilistic output
 bg.pred.prob <- predict(bg.mod ,
                         subset(spam.test,select=-type),
                         type="prob")
@@ -34,6 +34,6 @@ plot.roc(spam.test$type,
          add = TRUE)
 
 legend(x = 0.6, y = 0.8, legend = c("Bagging",
-                                  "Random forest",
-                                  "Logistic regression"),
+                                    "Random forest",
+                                    "Logistic regression"),
        col = c("blue", "green", "red"), lwd = 1)

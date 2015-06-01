@@ -1,9 +1,9 @@
 #install.packages("randomForest")
 #library(randomForest)
 
-# next, let's build a bagged model
+# next, let's build a bagging model
 bg.mod<-randomForest(type ~ ., data = spam.train,
-                     mtry = num.var-1, # try all variables at each split
+                     mtry = num.var - 1, # try all variables at each split
                      ntree = 300,
                      proximity = TRUE,
                      importance = TRUE)
@@ -12,7 +12,7 @@ beep()
 # Out-of-bag (OOB) error rate:
 # x-axis: number of trees constructed
 # y-axis: the ith OOB error rate of the ensemble
-# up to the point where i trees have constructed
+# up to the point where i trees have been constructed
 plot(bg.mod$err.rate[,1], type = "l", lwd = 3, col = "blue",
      main = "Bagging: OOB estimate of error rate",
      xlab = "Number of Trees", ylab = "OOB error rate")
@@ -35,7 +35,7 @@ beep()
 
 # let's make some predictions
 bg.pred <- predict(bg.mod,
-                   subset(spam.test,select = -type), 
+                   subset(spam.test, select = -type), 
                    type = "class")
 
 # confusion matrix

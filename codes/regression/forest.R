@@ -3,9 +3,8 @@
 
 # finally, the random forest model
 rf.mod<-randomForest(price ~ ., data = imp.train,
-                     mtry = 8, # only difference from bagging is here
-                     ntree = 500,
-                     proximity = TRUE,
+                     mtry = floor((num.var - 1) / 3), # only difference from bagging is here
+                     ntree = 300,
                      importance = TRUE)
 beep()
 
@@ -20,9 +19,11 @@ varImpPlot(rf.mod,
 
 # let's make some predictions
 rf.pred <- predict(rf.mod,
-                   subset(imp.test,select = -price))
+                   subset(imp.test, select = -price))
 
-plot(rf.pred,imp.test$price)
-abline(a=0,b=1)
+# Comparing our predictions with test data:
+plot(rf.pred, imp.test$price, main = "Random forest: Actual vs. predicted")
+abline(a = 0, b = 1)
 
-print(rf.mse <- mean((rf.pred-imp.test$price) ** 2))
+# MSE of RF model
+print(rf.mse <- mean((rf.pred - imp.test$price) ** 2))

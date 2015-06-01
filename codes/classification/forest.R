@@ -3,7 +3,7 @@
 
 # finally, the random forest model
 rf.mod <- randomForest(type ~ ., data = spam.train,
-                       mtry = 2, # only difference from bagging is here
+                       mtry = 7, # only difference from bagging is here
                        ntree = 300,
                        proximity = TRUE,
                        importance = TRUE)
@@ -31,6 +31,7 @@ beep()
 rf.pred <- predict(rf.mod,
                    subset(spam.test,select = -type), 
                    type="class")
+
 # confusion matrix
 print(rf.pred.results <- table(rf.pred, spam.test$type))
 

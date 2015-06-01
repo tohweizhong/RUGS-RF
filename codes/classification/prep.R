@@ -1,4 +1,4 @@
-# packages that we need for this evening:
+# packages that we will need this evening:
 #  @ kernlab:      for the spam dataset
 #  @ tree:         for decision tree construction
 #  @ randomForest: for bagging and RF
@@ -17,7 +17,7 @@
 library(kernlab)
 library(tree)
 library(randomForest)
-library(beepr)
+library(beepr) # try it! beep()
 library(pROC)
 
 # load dataset

@@ -3,9 +3,8 @@
 
 # next, let's build a bagged model
 bg.mod<-randomForest(price ~ ., data = imp.train,
-                     mtry = num.var-1, # try all variables at each split
-                     ntree = 500,
-                     proximity = TRUE,
+                     mtry = num.var - 1, # try all variables at each split
+                     ntree = 300,
                      importance = TRUE)
 beep()
 
@@ -24,8 +23,9 @@ varImpPlot(bg.mod,
 bg.pred <- predict(bg.mod,
                    subset(imp.test,select = -price))
 
-plot(bg.pred,imp.test$price)
-abline(a=0,b=1)
+# Comparing our predictions with test data:
+plot(bg.pred,imp.test$price, main = "Bagging: Actual vs. predicted")
+abline(a = 0, b = 1)
 
-print(bg.mse <- mean((bg.pred-imp.test$price) ** 2))
-
+# MSE of bagged model
+print(bg.mse <- mean((bg.pred - imp.test$price) ** 2))
