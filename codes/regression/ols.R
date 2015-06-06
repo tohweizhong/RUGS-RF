@@ -6,7 +6,7 @@ ols.pred <- predict(ols.mod,
                    subset(imp.test, select = -price))
 
 # comparisons with test data:
-plot(ols.pred,imp.test$price, main = "OLS: Actual vs. predicted")
+plot(ols.pred, imp.test$price, main = "OLS: Actual vs. predicted")
 abline(a = 0, b = 1)
 
 # MSE

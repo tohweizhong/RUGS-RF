@@ -4,7 +4,6 @@
 
 library(tree)
 library(randomForest)
-library(beepr)
 
 data(imports85)
 imp <- imports85
@@ -12,6 +11,8 @@ imp <- imports85
 # The following data preprocessing steps on
 # the imports85 dataset are suggested by
 # the authors of the randomForest package
+# look at
+# > ?imports85
 imp <- imp[,-2]  # Too many NAs in normalizedLosses.
 imp <- imp[complete.cases(imp), ]
 # ## Drop empty levels for factors

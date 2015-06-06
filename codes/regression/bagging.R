@@ -3,7 +3,7 @@
 
 # next, let's build a bagged model
 bg.mod<-randomForest(price ~ ., data = imp.train,
-                     mtry = num.var - 1, # try all variables at each split
+                     mtry = num.var - 1, # try all variables at each split, except the response variable
                      ntree = 300,
                      importance = TRUE)
 beep()

@@ -1,5 +1,5 @@
 # for comparison purposes, consider also a logistic regression model
-log.mod<-glm(type ~ . , data = spam.train,
+log.mod <- glm(type ~ . , data = spam.train,
              family = binomial(link = logit))
 
 # predictions

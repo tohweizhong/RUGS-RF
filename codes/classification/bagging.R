@@ -23,8 +23,6 @@ varImpPlot(bg.mod,
            main = "Bagging: Variable importance")
 
 # multidimensional scaling plot:
-# a technique used to visualize high-dimensional data
-# akin to PCA (principal components analysis)
 # green samples are non-spam,
 # red samples are spam
 MDSplot(bg.mod,

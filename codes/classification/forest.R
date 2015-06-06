@@ -14,6 +14,12 @@ plot(rf.mod$err.rate[,1], type = "l", lwd = 3, col = "blue",
      main = "Random forest: OOB estimate of error rate",
      xlab = "Number of Trees", ylab = "OOB error rate")
 
+# tuning the mtry hyperparameter
+tuneRF(subset(spam.train, select = -type),
+       spam.train$type,
+       ntreetry = 100)
+title("Random forest: Tuning the mtry hyperparameter")
+
 # variable importance
 varImpPlot(rf.mod,
            main = "Random forest: Variable importance")
