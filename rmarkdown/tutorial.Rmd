@@ -101,13 +101,13 @@ title("Decision tree")
 text(tree.mod, cex = 0.75)
 ```
 
-The model may be overtly complicated. Typically, after constructing a decision tree model, we may want to prune the model, by collapsing certain edges, nodes and leaves together without much loss of performance. This is done by iteratively looking comparing the number of leaf nodes with the model's performance (by k-fold cross validation _within the training set_).
+The model may be overtly complicated. Typically, after constructing a decision tree model, we may want to prune the model, by collapsing certain edges, nodes and leaves together without much loss of performance. This is done by iteratively comparing the number of leaf nodes with the model's performance (by k-fold cross validation _within the training set_).
 
 ```{r c_tree3}
 cv.prune <- cv.tree(tree.mod, FUN = prune.misclass)
 plot(cv.prune$size, cv.prune$dev, pch = 20, col = "red", type = "b",
      main = "Decision tree: Cross validation to find optimal size of tree",
-     xlab = "Size of tree", ylab = "Deviance")
+     xlab = "Size of tree", ylab = "Misclassifications")
 ```
 
 Having 9 leaf nodes may be good (maximising performance while minimising complexity).
@@ -202,7 +202,7 @@ The only difference between the bagging model and random forest model is that th
 
 ```{r c_rf1}
 rf.mod <- randomForest(type ~ ., data = spam.train,
-                       mtry = 7, # only difference from bagging is here
+                       mtry = floor(sqrt(num.var - 1)), # 7; only difference from bagging is here
                        ntree = 300,
                        proximity = TRUE,
                        importance = TRUE)
@@ -213,7 +213,7 @@ plot(rf.mod$err.rate[,1], type = "l", lwd = 3, col = "blue",
      xlab = "Number of Trees", ylab = "OOB error rate")
 ```
 
-Besides tuning the __ntree__ hyperparameter, we might also be interested in tuning the __mtry__ hyperparameter in random forest:
+Besides tuning the __ntree__ hyperparameter, we might also be interested in tuning the __mtry__ hyperparameter in random forest. The random forest model may be built using the __mtry__ value that minimises the OOB error.
 
 ```{r c_rf2}
 tuneRF(subset(spam.train, select = -type),
@@ -222,7 +222,7 @@ tuneRF(subset(spam.train, select = -type),
 title("Random forest: Tuning the mtry hyperparameter")
 ```
 
-The random forest model may be built using the __mtry__ value that minimises the OOB error.
+
 
 ```{r c_rf3}
 # variable importance
@@ -412,7 +412,7 @@ text(tree.mod, cex = 0.75)
 cv.prune <- cv.tree(tree.mod, FUN = prune.tree)
 plot(cv.prune$size, cv.prune$dev, pch = 20, col = "red", type = "b",
      main = "Cross validation to find optimal size of tree",
-     xlab = "Size of tree", ylab = "Deviance")
+     xlab = "Size of tree", ylab = "Mean squared error")
 # looks fine
 
 # now let's make some predictions
@@ -471,7 +471,7 @@ Finally, the random forest model.
 
 ```{r r_rf1}
 rf.mod<-randomForest(price ~ ., data = imp.train,
-                     mtry = floor((num.var - 1) / 3), # only difference from bagging is here
+                     mtry = floor((num.var - 1) / 3), # 7; only difference from bagging is here
                      ntree = 300,
                      importance = TRUE)
 

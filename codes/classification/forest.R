@@ -3,7 +3,7 @@
 
 # finally, the random forest model
 rf.mod <- randomForest(type ~ ., data = spam.train,
-                       mtry = 7, # only difference from bagging is here
+                       mtry = floor(sqrt(num.var - 1)), # 7; only difference from bagging is here
                        ntree = 300,
                        proximity = TRUE,
                        importance = TRUE)

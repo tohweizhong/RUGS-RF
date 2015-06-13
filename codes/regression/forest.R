@@ -3,7 +3,7 @@
 
 # finally, the random forest model
 rf.mod<-randomForest(price ~ ., data = imp.train,
-                     mtry = floor((num.var - 1) / 3), # only difference from bagging is here
+                     mtry = floor((num.var - 1) / 3), # 7; only difference from bagging is here
                      ntree = 300,
                      importance = TRUE)
 beep()

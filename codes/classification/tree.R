@@ -13,7 +13,7 @@ text(tree.mod, cex = 0.75)
 cv.prune <- cv.tree(tree.mod, FUN = prune.misclass)
 plot(cv.prune$size, cv.prune$dev, pch = 20, col = "red", type = "b",
      main = "Decision tree: Cross validation to find optimal size of tree",
-     xlab = "size of tree", ylab = "performance")
+     xlab = "Size of tree", ylab = "Misclassifications")
 
 # let's choose a tree size of 5
 best.tree.size <- 9

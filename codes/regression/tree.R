@@ -13,7 +13,7 @@ text(tree.mod, cex = 0.75)
 cv.prune <- cv.tree(tree.mod, FUN = prune.tree)
 plot(cv.prune$size, cv.prune$dev, pch = 20, col = "red", type = "b",
      main = "Cross validation to find optimal size of tree",
-     xlab = "Size of tree", ylab = "Deviance")
+     xlab = "Size of tree", ylab = "Mean squared error")
 # looks fine
 
 # now let's make some predictions
