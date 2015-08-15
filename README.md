@@ -1,6 +1,8 @@
 # RUGS-RF
 RUGS Data Mining with R (Workshop II) - Random forests
 
-15/7/2015
+* 15/7/2015: Slide deck also available [here](http://www.slideshare.net/tohweizhong/r-user-group-singapore-data-mining-with-r-workshop-ii-random-forests).
 
-Slide deck also available [here](http://www.slideshare.net/tohweizhong/r-user-group-singapore-data-mining-with-r-workshop-ii-random-forests).
+IDA facilitation - Coursera Data Science Specialization: Practical Machine Learning
+
+* 17/8/2015, 24/8/2015: Materials also used for Weeks 3 and 4.
