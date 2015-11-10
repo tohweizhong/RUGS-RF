@@ -7,9 +7,7 @@ barplot(c(tree.accuracy,
 
 # plot ROC curve + AUC
 # (Receiver operating characteristic) (Area under curve)
-# Note that this cannot be done for decision tree models,
-# because the ROC is only valid for models that give
-# probabilistic output
+# the ROC is only valid for models that give probabilistic output
 bg.pred.prob <- predict(bg.mod ,
                         subset(spam.test,select=-type),
                         type="prob")

@@ -290,7 +290,7 @@ barplot(c(tree.accuracy,
 
 We can see here that the ensemble models (bagging and random forest) outperforms the single decision tree, and also the logistic regression model. It turns out here that the bagging and the random forest models have about the same classification performance. Understanding the rationale of _random subspace sampling_ (refer to slides) should allow us to appreciate the potential improvement of random forest over the bagging model.
 
-Finally, let's plot the ROC curves of the various models. Note that this cannot be done for decision tree models, because the ROC is only valid for models that give probabilistic output.
+Finally, let's plot the ROC curves of the various models. The ROC is only valid for models that give probabilistic output.
 
 ```{r c_viz2}
 bg.pred.prob <- predict(bg.mod ,
