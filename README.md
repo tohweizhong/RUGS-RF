@@ -9,3 +9,8 @@ RUGS Data Mining with R (Workshop II) - Random forests
 IDA MOOC facilitation: Coursera Data Science Specialization - Practical Machine Learning
 
 * 17/8/2015, 24/8/2015: Materials also used for Weeks 3 and 4.
+
+RUG-Philippines Random forests
+
+* 20/7/2016
+* [Event page](http://www.meetup.com/R-Users-Group-Philippines/events/231484820/)
